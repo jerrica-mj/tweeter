@@ -1,0 +1,14 @@
+/* HEADER STYLING */
+/* The header displays the user's name and avatar */
+
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* BG: Transparent Texture from https://www.transparenttextures.com/ */
+  background-color: #f5ef87;
+  background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+}
