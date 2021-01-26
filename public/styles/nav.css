@@ -1,0 +1,13 @@
+/* NAVIGATION BAR STYLING */
+
+nav {
+  height: 120px;
+  width: 100vw; /* 100% of the viewport width */
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding: 1.5em;
+}
+
+nav span {
+  font-family: "Bungee", sans-serif;
+}
