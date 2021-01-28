@@ -1,7 +1,7 @@
 /* HEADER STYLING */
 /* The header displays the user's name and avatar */
 
-header {
+body > header {
   height: 400px;
   width: 100%;
   /* display vertically beneath the fixed navbar */
