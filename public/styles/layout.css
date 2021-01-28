@@ -50,3 +50,10 @@ body {
    margin: 0 auto;
    background-color: var(--background);
  }
+
+ /* Sections in Main */
+ main section {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
