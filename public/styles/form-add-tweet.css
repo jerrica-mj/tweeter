@@ -2,11 +2,6 @@
 /* Form displays above the tweets feed, under the header */
 
 
-main .new-tweet {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-}
 
 .new-tweet h2 {
   align-self: center;
