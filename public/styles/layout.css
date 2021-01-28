@@ -11,14 +11,33 @@ html {
 }
 
 /*
+ * Global CSS Variables for use in other CSS files to keep things uniform
+ */
+
+ :root {
+   /* Custom fonts from https://fonts.google.com/ */
+   --main-font: "Source Sans Pro", sans-serif;
+   --logo-font: "Bungee", sans-serif;
+   /* palette generated using http://colormind.io/bootstrap/ */
+   --background: #FBFAF9;
+   --main-color: #2c88d3;
+   --accent1: #74aac1;
+   --accent2: #61688f;
+   --dark-color: #131c35;
+ }
+
+/*
  * Global layout stuff
  */
 
 body {
   color: #545149;
-  background-color: #f4f1ec;
+  /* ** TODO: Choose between original and matching color */
+  /* background-color: #f4f1ec; */
+  background-color: var(--background);
   font-size: 24px;
-  font-family: "Source Sans Pro", sans-serif;
+  /* font-family: "Source Sans Pro", sans-serif; */
+  font-family: var(--main-font);
 }
 
 /*
@@ -29,6 +48,5 @@ body {
  main {
    width: 90%;
    margin: 0 auto;
-   /* same colour as header (header.css) */
-   background-color: #f5ef87;
+   background-color: var(--background);
  }
