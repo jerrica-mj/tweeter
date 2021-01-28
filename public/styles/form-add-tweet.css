@@ -54,3 +54,8 @@ main .new-tweet {
   background-color: #4056A1;
   border: none;
 }
+
+/* Character Counter */
+.new-tweet .count-negative {
+  color: red;
+}
