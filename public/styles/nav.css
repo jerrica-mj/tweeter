@@ -3,7 +3,7 @@
 nav {
   height: 120px;
   width: 100vw; /* 100% of the viewport width */
-  background-color: #4056A1;
+  background-color: var(--main-color);
   color: #FFFFFF;
   padding: 1.5em;
   /* Make navbar sticky / fixed position at top */
@@ -14,5 +14,5 @@ nav {
 }
 
 nav span {
-  font-family: "Bungee", sans-serif;
+  font-family: var(--logo-font);
 }
