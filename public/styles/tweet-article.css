@@ -1,0 +1,62 @@
+/* INDIVIDUAL TWEET / ARTICLE STYLING */
+/* Each tweet is an `article` with a `header` and `footer`, and should have a hover state */
+/* They should display in a column, newest at the top */
+
+
+
+article.tweet {
+  width: 80%;
+  border: 3px solid black;
+  padding: 0.5em;
+}
+
+/* header, tweet content, and footer */
+article.tweet > * {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: auto 0.5em;
+}
+
+
+/* HEADER */
+/* div w/ user image, name, and handle */
+article.tweet header .tweet-user {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+/* user profile image */
+article.tweet header * {
+  padding: 0.1em 0.2em;
+}
+
+
+/* DIV W/ TWEET TEXT */
+article.tweet > div {
+  border-bottom: 3px solid black;
+  padding: 0.5em;
+}
+
+
+/* FOOTER */
+article.tweet footer {
+  margin: 0.5em;
+}
+
+/* div w/ date */
+article.tweet footer .tweet-date {
+  font-size: 0.75em;
+}
+
+/* div w/ flag, retweets, likes icons */
+article.tweet footer .tweet-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 5em;
+  justify-content: space-between;
+  color: var(--main-color);
+  font-size: 0.7em;
+}
