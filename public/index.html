@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/form-add-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweet-article.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -60,9 +61,26 @@
         </form>
       </section>
 
-      <!-- All Tweets Section -->
+      <!-- All (Posted) Tweets Section -->
       <section class="all-tweets">
-
+        <article class="tweet">
+          <header class="tweet-header">
+            <div class="tweet-user">
+              <div class="user-image">pic</div>
+              <div class="user-name">name</div>
+            </div>
+            <div class="user-handle">@handle</div>
+          </header>
+          <div class="tweet-contents">This is the tweet's text</div>
+          <footer class="tweet-footer">
+            <div class="tweet-date">10 days ago</div>
+            <div class="tweet-buttons">
+              <div class="tweet-flag">flag</div>
+              <div class="tweet-retweets">retweet</div>
+              <div class="tweet-likes">likes</div>
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>
