@@ -28,9 +28,14 @@ article.tweet header .tweet-user {
   justify-content: space-between;
   align-items: center;
 }
-/* user profile image */
+/* user image, name, and handle */
 article.tweet header * {
   padding: 0.1em 0.2em;
+}
+/* user handle --> hidden until tweet is hovered */
+article.tweet header div.user-handle {
+  visibility: hidden;
+  opacity: 0.5;
 }
 
 
@@ -47,16 +52,29 @@ article.tweet footer {
 }
 
 /* div w/ date */
-article.tweet footer .tweet-date {
+article.tweet footer div.tweet-date {
   font-size: 0.75em;
 }
 
 /* div w/ flag, retweets, likes icons */
-article.tweet footer .tweet-buttons {
+article.tweet footer div.tweet-buttons {
   display: flex;
   flex-flow: row nowrap;
   width: 5em;
   justify-content: space-between;
   color: var(--main-color);
   font-size: 0.7em;
+}
+
+
+/* HOVER action */
+section.all-tweets article.tweet:hover {
+  box-shadow: 5px 5px 1px grey;
+}
+section.all-tweets article.tweet:hover * {
+  visibility: visible;
+  color: rgb(12, 12, 12);
+}
+article.tweet:hover footer div.tweet-buttons * {
+  color: var(--main-color);
 }
