@@ -64,12 +64,13 @@
       </section>
 
       <!-- All (Posted) Tweets Section -->
-      <section class="all-tweets">
+      <section class="all-tweets" id="tweets-container">
         <article class="tweet">
           <header class="tweet-header">
             <div class="tweet-user">
               <!-- TODO: replace placeholder once user info set up -->
               <div class="user-image"><i class="fas fa-user-circle"></i></div>
+              <!-- <img class="user-image" src="" alt="User's avatar"> -->
               <div class="user-name">name</div>
             </div>
             <div class="user-handle">@handle</div>
@@ -78,11 +79,16 @@
           <footer class="tweet-footer">
             <div class="tweet-date">10 days ago</div>
             <div class="tweet-buttons">
+
               <!-- Use Font Awesome Classes for Icons -->
-              <div class="tweet-flag"><i class="fas fa-flag"></i></div>
-              <div class="tweet-retweets"><i class="fas fa-retweet"></i></div>
+              <i class="fas fa-flag"></i>
+              <i class="fas fa-retweet"></i>
               <!-- IDEA: could toggle solid(fas)/outline(far) heart based on whether user has liked -->
-              <div class="tweet-likes"><i class="fas fa-heart"></i></div>
+              <i class="fas fa-heart"></i>
+
+              <!-- <div class="tweet-flag"><i class="fas fa-flag"></i></div> -->
+              <!-- <div class="tweet-retweets"><i class="fas fa-retweet"></i></div> -->
+              <!-- <div class="tweet-likes"><i class="fas fa-heart"></i></div> -->
             </div>
           </footer>
         </article>
