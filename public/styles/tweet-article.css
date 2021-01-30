@@ -8,6 +8,8 @@ article.tweet {
   width: 80%;
   border: 3px solid black;
   padding: 0.5em;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 /* header, tweet content, and footer */
