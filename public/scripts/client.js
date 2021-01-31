@@ -19,6 +19,37 @@
    */
   const timeSince = function(pastDate) {
     const present = new Date().getTime();
+    const timeAgo = present - pastDate; // in ms
+    // convert timeAgo into different units, rounded down to whole numbers
+    const secondsAgo = Math.floor(timeAgo / (1000));
+    const minutesAgo = Math.floor(secondsAgo / 60);
+    const hoursAgo = Math.floor(minutesAgo / 60);
+    const daysAgo = Math.floor(hoursAgo / 24);
+    const weeksAgo = Math.floor(daysAgo / 7);
+    const monthsAgo = Math.floor(daysAgo / 30); // average days per month
+    const yearsAgo = Math.floor(daysAgo / 365);
+    // use the biggest time frame <= 1 unit, rounded down
+    if (yearsAgo >= 1) {
+      return `${yearsAgo} years ago`;
+    }
+    else if (monthsAgo >= 1) {
+      return `${monthsAgo} months ago`;
+    }
+    else if (weeksAgo >= 1) {
+      return `${weeksAgo} weeks ago`;
+    }
+    else if (daysAgo >= 1) {
+      return `${daysAgo} days ago`;
+    }
+    else if (hoursAgo >= 1) {
+      return `${hoursAgo} hours ago`;
+    }
+    else if (minutesAgo >= 1) {
+      return `${minutesAgo} minutes ago`;
+    }
+    else {
+      return `${secondsAgo} secods ago`;
+    }
   };
 
 
@@ -31,25 +62,24 @@
     // turn tweet data into an HTML tweet element/article
     const tweetHtml = `
     <article class="tweet">
-      <header class="tweet-header">
-        <div class="tweet-user">
-          <img class="user-image" src=${tweet.user.avatar} alt="User's avatar"></img>
-          <div class="user-name">${tweet.user.name}</div>
-        </div>
-        <div class="user-handle">${tweet.user.handle}</div>
-      </header>
-      <div class="tweet-contents">${tweet.content.text}</div>
-      <footer class="tweet-footer">
-        <div class="tweet-date">Created at ${tweet.created_at}</div>
-        <div class="tweet-buttons">
-          <i class="fas fa-flag"></i>
-          <i class="fas fa-retweet"></i>
-          <i class="fas fa-heart"></i>
-        </div>
-      </footer>
+    <header class="tweet-header">
+    <div class="tweet-user">
+    <img class="user-image" src=${tweet.user.avatar} alt="User's avatar"></img>
+    <div class="user-name">${tweet.user.name}</div>
+    </div>
+    <div class="user-handle">${tweet.user.handle}</div>
+    </header>
+    <div class="tweet-contents">${tweet.content.text}</div>
+    <footer class="tweet-footer">
+    <div class="tweet-date">${timeSince(tweet.created_at)}</div>
+    <div class="tweet-buttons">
+    <i class="fas fa-flag"></i>
+    <i class="fas fa-retweet"></i>
+    <i class="fas fa-heart"></i>
+    </div>
+    </footer>
     </article>
     `;
-    // TODO: FIX .tweet-date to show the time since posted, in a readable format (hours, days, years(?))
 
     return tweetHtml;
   }
@@ -67,24 +97,6 @@
     },
     "created_at": 1461116232227
   };
-
-
-  // --------------------------
-  // figure out date formatting
-  // const now = new Date().getTime();
-  // console.log(now);
-  // console.log(tweetData.created_at);
-  // const dateDiff = now - tweetData.created_at;
-  // // calculate milliseconds in different time units for possible display
-  // const oneMinute = 1000 * 60;
-  // const oneHour = oneMinute * 60;
-  // const oneDay = oneHour * 24;
-  // const oneWeek = oneDay * 7;
-  // const oneMonth = oneDay * 30; // average days in month
-  // const oneYear = oneDay * 365;
-  // console.log(dateDiff);
-  // console.log(Math.floor(dateDiff/oneYear));
-  // --------------------------
 
 
   const $tweet = createTweetElement(tweetData);
