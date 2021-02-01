@@ -21,6 +21,15 @@
       // prevent the default submission behaviour
       event.preventDefault();
 
+      // validate that the tweet text (text=...) is 1-140 characters
+      const tweetText = $(this).serialize().slice(5);
+      if (!tweetText) {
+        return alert("Tweet text must not be empty! Please add a message and tweet again.");
+      }
+      else if (tweetText.length > 140) {
+        return alert("Tweet messages may not exceed 140 characters. Please shorten your message and tweet again.");
+      }
+
       // perform an AJAX POST request, sending the serialized form data to the server
       console.log("Tweet button clicked, performing ajax call...");
       $.ajax("/tweets/", {
