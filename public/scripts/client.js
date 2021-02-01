@@ -13,6 +13,31 @@
  $(document).ready(() => {
 
   /**
+   * Asynchronous AJAX POST request to send new tweet form data to the server.
+   */
+  $(function() {
+    // on form submission, carry out function
+    $("#new-tweet-form").submit(function(event) {
+      // prevent the default submission behaviour
+      event.preventDefault();
+
+      // perform an AJAX POST request, sending the serialized form data to the server
+      console.log("Tweet button clicked, performing ajax call...");
+      $.ajax("/tweets/", {
+        method: "POST",
+        data: $(this).serialize()
+      })
+      // Request completion handler
+      .then(function(returnValue) {
+        console.log("AJAX POST request complete");
+        console.log(returnValue);
+      });
+    });
+  });
+
+
+
+  /**
    * Determines the time that has passed since a specified past date/time to the present, and returns that difference in appropriate units (minutes, hours, days, weeks, months, or years).
    * @param {number} pastDate The past date, in milliseconds, to compare with the present date.
    * @return {string} The time difference as part of a string with appropriate units (minutes, hours, days, weeks, months, or years).
@@ -101,7 +126,7 @@
 
   const $tweet = createTweetElement(tweetData);
 
-  console.log($tweet); // see what it looks like
+  // console.log($tweet); // see what it looks like
   $("#tweets-container").append($tweet); // TEST add it to the page to make sure it has all the right elements, classes, etc.
 
  });
