@@ -73,7 +73,7 @@
       return `${minutesAgo} minutes ago`;
     }
     else {
-      return `${secondsAgo} secods ago`;
+      return `${secondsAgo} seconds ago`;
     }
   };
 
@@ -89,7 +89,7 @@
     <article class="tweet">
     <header class="tweet-header">
     <div class="tweet-user">
-    <img class="user-image" src=${tweet.user.avatar} alt="User's avatar"></img>
+    <img class="user-image" src=${tweet.user.avatars} alt="User's avatar"></img>
     <div class="user-name">${tweet.user.name}</div>
     </div>
     <div class="user-handle">${tweet.user.handle}</div>
@@ -114,7 +114,7 @@
   const tweetData = {
     "user": {
       "name": "Newton",
-      "avatar": "https://i.imgur.com/73hZDYK.png",
+      "avatars": "https://i.imgur.com/73hZDYK.png",
       "handle": "@SirIsaac"
     },
     "content": {
@@ -124,9 +124,37 @@
   };
 
 
-  const $tweet = createTweetElement(tweetData);
 
-  // console.log($tweet); // see what it looks like
-  $("#tweets-container").append($tweet); // TEST add it to the page to make sure it has all the right elements, classes, etc.
+  /**
+   * Renders tweet elements in the DOM.
+   * @param {array} tweetsArray an array of tweet objects to be rendered.
+   */
+  const renderTweets = function(tweetsArray) {
+    tweetsArray.forEach(tweetObj => {
+      // turn the tweet into HTML, then append to the page
+      const $tweet = createTweetElement(tweetObj);
+      console.log($tweet);
+      $("#tweets-container").prepend($tweet);
+    });
+  };
+
+  renderTweets([tweetData]); // TEST CODE
+
+
+
+  /**
+   * Fetches tweets from the /tweets page using a jQuery request.
+   */
+  const loadTweets = function() {
+    console.log("Page loaded, fetching tweets by AJAX request...")
+    $.ajax("/tweets/", {method: "GET"})
+    .then(function(tweets) {
+      console.log("SUCCESS!");
+      console.log(tweets);
+      renderTweets(tweets);
+    });
+  };
+
+  loadTweets();
 
  });
