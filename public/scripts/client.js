@@ -55,27 +55,36 @@
     const yearsAgo = Math.floor(daysAgo / 365);
     // use the biggest time frame <= 1 unit, rounded down
     if (yearsAgo >= 1) {
+      if (yearsAgo === 1) return `${yearsAgo} year ago`;
       return `${yearsAgo} years ago`;
     }
     else if (monthsAgo >= 1) {
+      if (monthsAgo === 1) return `${monthsAgo} month ago`;
       return `${monthsAgo} months ago`;
     }
     else if (weeksAgo >= 1) {
+      if (weeksAgo === 1) return `${weeksAgo} week ago`;
       return `${weeksAgo} weeks ago`;
     }
     else if (daysAgo >= 1) {
+      if (daysAgo === 1) return `${daysAgo} day ago`;
       return `${daysAgo} days ago`;
     }
     else if (hoursAgo >= 1) {
+      if (hoursAgo === 1) return `${hoursAgo} hour ago`;
       return `${hoursAgo} hours ago`;
     }
     else if (minutesAgo >= 1) {
+      if (minutesAgo === 1) return `${minutesAgo} minute ago`;
       return `${minutesAgo} minutes ago`;
     }
     else {
+      // could use "just now" for a set time frame
+      if (secondsAgo === 1) return `${secondsAgo} second ago`;
       return `${secondsAgo} seconds ago`;
     }
   };
+
 
 
   /**
@@ -85,43 +94,27 @@
    */
   const createTweetElement = function(tweet) {
     // turn tweet data into an HTML tweet element/article
-    const tweetHtml = `
-    <article class="tweet">
-    <header class="tweet-header">
-    <div class="tweet-user">
-    <img class="user-image" src=${tweet.user.avatars} alt="User's avatar"></img>
-    <div class="user-name">${tweet.user.name}</div>
-    </div>
-    <div class="user-handle">${tweet.user.handle}</div>
-    </header>
-    <div class="tweet-contents">${tweet.content.text}</div>
-    <footer class="tweet-footer">
-    <div class="tweet-date">${timeSince(tweet.created_at)}</div>
-    <div class="tweet-buttons">
-    <i class="fas fa-flag"></i>
-    <i class="fas fa-retweet"></i>
-    <i class="fas fa-heart"></i>
-    </div>
-    </footer>
-    </article>
-    `;
+    const tweetHtml = `<article class="tweet">
+      <header class="tweet-header">
+      <div class="tweet-user">
+      <img class="user-image" src=${tweet.user.avatars} alt="User's avatar"></img>
+      <div class="user-name">${tweet.user.name}</div>
+      </div>
+      <div class="user-handle">${tweet.user.handle}</div>
+      </header>
+      <div class="tweet-contents">${tweet.content.text}</div>
+      <footer class="tweet-footer">
+      <div class="tweet-date">${timeSince(tweet.created_at)}</div>
+      <div class="tweet-buttons">
+      <i class="fas fa-flag"></i>
+      <i class="fas fa-retweet"></i>
+      <i class="fas fa-heart"></i>
+      </div>
+      </footer>
+      </article>`;
 
     return tweetHtml;
   }
-
-
-  // TEST / DRIVER CODE (TEMP) --> Will eventually get this from the server
-  const tweetData = {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  };
 
 
 
@@ -133,12 +126,9 @@
     tweetsArray.forEach(tweetObj => {
       // turn the tweet into HTML, then append to the page
       const $tweet = createTweetElement(tweetObj);
-      console.log($tweet);
       $("#tweets-container").prepend($tweet);
     });
   };
-
-  renderTweets([tweetData]); // TEST CODE
 
 
 
@@ -146,11 +136,10 @@
    * Fetches tweets from the /tweets page using a jQuery request.
    */
   const loadTweets = function() {
-    console.log("Page loaded, fetching tweets by AJAX request...")
+    console.log("Fetching tweets from the server...")
     $.ajax("/tweets/", {method: "GET"})
     .then(function(tweets) {
-      console.log("SUCCESS!");
-      console.log(tweets);
+      console.log("Success...Rendering tweets...");
       renderTweets(tweets);
     });
   };
