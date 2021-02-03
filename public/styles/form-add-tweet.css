@@ -8,6 +8,33 @@
   width: fit-content;
 }
 
+
+/* Error messages from form validation */
+section.new-tweet div.new-tweet-error {
+  background-color: rgba(253, 138, 138, 0.8);
+  background-color: rgb(250, 150, 150);
+  color: rgb(150, 44, 44);
+  font-size: 0.9em;
+  padding: 0.4em;
+  border-radius: 0.4em;
+  border: 0.1rem solid rgb(246, 135, 153);
+  margin-bottom: 1em;
+  display: flex;
+  flex-flow: row wrap;
+  width: 80%;
+  justify-content: left;
+  align-items: center;
+  display: none;
+}
+section.new-tweet div.new-tweet-error i {
+  margin-right: 0.5em;
+}
+main.container section.new-tweet div.show-error {
+  display: block;
+}
+
+
+/* New Tweet Form */
 .new-tweet form {
   display: flex;
   flex-flow: column nowrap;
