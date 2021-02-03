@@ -145,6 +145,9 @@ $(document).ready(() => {
         .then(function(returnValue) {
           console.log("AJAX POST request complete");
           console.log(returnValue);
+          // clear the form textarea once submitted
+          $(":input", "#new-tweet-form")
+            .val("");
           loadTweets();
         });
     });
