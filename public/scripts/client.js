@@ -117,6 +117,7 @@ $(document).ready(() => {
 
   loadTweets();
 
+  // $("#error-msg-1").hide();
 
   /**
    * Asynchronous AJAX POST request to send new tweet form data to the server.
@@ -127,12 +128,20 @@ $(document).ready(() => {
       // prevent the default submission behaviour
       event.preventDefault();
 
-      // validate that the tweet text (text=...) is 1-140 characters
-      const tweetText = $(this).serialize().slice(5);
+      // validate that the tweet text is 1-140 characters
+      // show error message if invalid input/tweet text
+      const tweetText = $(this).children("#tweet-text").val();
       if (!tweetText) {
-        return alert("Tweet text must not be empty! Please add a message and tweet again.");
+        $("#error-msg-1").addClass("show-error");
+        return $("#error-msg-1").slideDown();
       } else if (tweetText.length > 140) {
-        return alert("Tweet messages may not exceed 140 characters. Please shorten your message and tweet again.");
+        $("#error-msg-2").addClass("show-error");
+        return $("#error-msg-2").slideDown();
+      } else {
+        $("#error-msg-1").slideUp();
+        $("#error-msg-2").slideUp();
+        $("#error-msg-1").removeClass("show-error");
+        $("#error-msg-2").removeClass("show-error");
       }
 
       // perform an AJAX POST request, sending the serialized form data to the server
@@ -142,9 +151,8 @@ $(document).ready(() => {
         data: $(this).serialize()
       })
         // Request completion handler
-        .then(function(returnValue) {
+        .then(function() {
           console.log("AJAX POST request complete");
-          console.log(returnValue);
           // clear the form textarea once submitted
           $(":input", "#new-tweet-form")
             .val("");
