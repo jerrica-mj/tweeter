@@ -42,9 +42,11 @@ article.tweet header div.user-handle {
 
 
 /* DIV W/ TWEET TEXT */
-article.tweet > div {
+article.tweet > div.tweet-content {
   border-bottom: 3px solid black;
   padding: 0.5em;
+  /* wrap long text w/o spaces */
+  overflow-wrap: anywhere;
 }
 
 
