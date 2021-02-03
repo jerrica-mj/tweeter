@@ -50,9 +50,13 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <!-- New/Add Tweet Form Section -->
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
+        <!-- Form validation error messages -->
+        <div class="new-tweet-error" id="error-msg-1"><i class="far fa-times-circle"></i>Error! Tweets cannot be empty. Please add a message and tweet again.</div>
+        <div class="new-tweet-error" id="error-msg-2"><i class="far fa-times-circle"></i>Error! Max. 140 characters per tweet. Please shorten and tweet again.</div>
+
+        <!-- New/Add Tweet Form Section -->
         <form method="POST" action="/tweets/" id="new-tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
