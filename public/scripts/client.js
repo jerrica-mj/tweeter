@@ -73,34 +73,55 @@
    */
   const createTweetElement = function(tweet) {
     // turn tweet data into an HTML tweet element/article
-    const tweetHtml = `<article class="tweet">
-      <header class="tweet-header">
-      <div class="tweet-user">
-      <img class="user-image" src=${tweet.user.avatars} alt="User's avatar"></img>
-      <div class="user-name">${tweet.user.name}</div>
-      </div>
-      <div class="user-handle">${tweet.user.handle}</div>
-      </header>
-      <div class="tweet-contents">${tweet.content.text}</div>
-      <footer class="tweet-footer">
-      <div class="tweet-date">${timeSince(tweet.created_at)}</div>
-      <div class="tweet-buttons">
-      <i class="fas fa-flag"></i>
-      <i class="fas fa-retweet"></i>
-      <i class="fas fa-heart"></i>
-      </div>
-      </footer>
-      </article>`;
+    // use .text() to prevent XSS code injection from user input
+    const tweetHtml =
+      $("<article/>", {"class": "tweet"})
+        .append($("<header/>", {"class": "tweet-header"})
+          .append($("<div>", {"class": "tweet-user"})
+            .append($("<img/>", {"class": "user-image", "src": `${tweet.user.avatars}`, "alt": "User's avatar"}))
+            .append($("<div/>", {"class": "user-name"}).text(tweet.user.name)))
+          .append($("<div/>", {"class": "user-handle"}).text(tweet.user.handle)))
+        .append($("<div/>", {"class": "tweet-content"}).text(tweet.content.text))
+        .append($("<footer/>", {"class": "tweet-footer"})
+          .append($("<div>", {"class": "tweet-date"}).text(timeSince(tweet.created_at)))
+          .append($("<div/>", {"class": "tweet-buttons"})
+            .append($("<i/>", {"class": "fas fa-flag"}))
+            .append($("<i/>", {"class": "fas fa-retweet"}))
+            .append($("<i/>", {"class": "fas fa-heart"}))
+          )
+      );
+
+
+    // const tweetHtml = `<article class="tweet">
+    //   <header class="tweet-header">
+    //   <div class="tweet-user">
+    //   <img class="user-image" src=${tweet.user.avatars} alt="User's avatar"></img>
+    //   <div class="user-name">${tweet.user.name}</div>
+    //   </div>
+    //   <div class="user-handle">${tweet.user.handle}</div>
+    //   </header>
+    //   <div class="tweet-contents">${tweet.content.text}</div>
+    //   <footer class="tweet-footer">
+    //   <div class="tweet-date">${timeSince(tweet.created_at)}</div>
+    //   <div class="tweet-buttons">
+    //   <i class="fas fa-flag"></i>
+    //   <i class="fas fa-retweet"></i>
+    //   <i class="fas fa-heart"></i>
+    //   </div>
+    //   </footer>
+    //   </article>`;
+
+      console.log(tweetHtml);
 
       return tweetHtml;
-    }
+  };
 
 
 
-    /**
-     * Renders tweet elements in the DOM.
-   * @param {array} tweetsArray an array of tweet objects to be rendered.
-   */
+  /**
+    * Renders tweet elements in the DOM.
+    * @param {array} tweetsArray an array of tweet objects to be rendered.
+    */
   const renderTweets = function(tweetsArray) {
     tweetsArray.forEach(tweetObj => {
       // turn the tweet into HTML, then append to the page
