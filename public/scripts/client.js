@@ -9,8 +9,8 @@
 // moment().format();
 
 
- // Ensure that document is ready
- $(document).ready(() => {
+// Ensure that document is ready
+$(document).ready(() => {
 
 
 
@@ -34,32 +34,25 @@
     if (yearsAgo >= 1) {
       if (yearsAgo === 1) return `${yearsAgo} year ago`;
       return `${yearsAgo} years ago`;
-    }
-    else if (monthsAgo >= 1) {
+    } else if (monthsAgo >= 1) {
       if (monthsAgo === 1) return `${monthsAgo} month ago`;
       return `${monthsAgo} months ago`;
-    }
-    else if (weeksAgo >= 1) {
+    } else if (weeksAgo >= 1) {
       if (weeksAgo === 1) return `${weeksAgo} week ago`;
       return `${weeksAgo} weeks ago`;
-    }
-    else if (daysAgo >= 1) {
+    } else if (daysAgo >= 1) {
       if (daysAgo === 1) return `${daysAgo} day ago`;
       return `${daysAgo} days ago`;
-    }
-    else if (hoursAgo >= 1) {
+    } else if (hoursAgo >= 1) {
       if (hoursAgo === 1) return `${hoursAgo} hour ago`;
       return `${hoursAgo} hours ago`;
-    }
-    else if (minutesAgo >= 1) {
+    } else if (minutesAgo >= 1) {
       if (minutesAgo === 1) return `${minutesAgo} minute ago`;
       return `${minutesAgo} minutes ago`;
-    }
-    else if (secondsAgo >= 1){
+    } else if (secondsAgo >= 1) {
       if (secondsAgo === 1) return `${secondsAgo} second ago`;
       return `${secondsAgo} seconds ago`;
-    }
-    else {
+    } else {
       return "Just now";
     }
   };
@@ -89,31 +82,9 @@
             .append($("<i/>", {"class": "fas fa-retweet"}))
             .append($("<i/>", {"class": "fas fa-heart"}))
           )
-      );
+        );
 
-
-    // const tweetHtml = `<article class="tweet">
-    //   <header class="tweet-header">
-    //   <div class="tweet-user">
-    //   <img class="user-image" src=${tweet.user.avatars} alt="User's avatar"></img>
-    //   <div class="user-name">${tweet.user.name}</div>
-    //   </div>
-    //   <div class="user-handle">${tweet.user.handle}</div>
-    //   </header>
-    //   <div class="tweet-contents">${tweet.content.text}</div>
-    //   <footer class="tweet-footer">
-    //   <div class="tweet-date">${timeSince(tweet.created_at)}</div>
-    //   <div class="tweet-buttons">
-    //   <i class="fas fa-flag"></i>
-    //   <i class="fas fa-retweet"></i>
-    //   <i class="fas fa-heart"></i>
-    //   </div>
-    //   </footer>
-    //   </article>`;
-
-      console.log(tweetHtml);
-
-      return tweetHtml;
+    return tweetHtml;
   };
 
 
@@ -136,47 +107,46 @@
    * Fetches tweets from the /tweets page using a jQuery request.
    */
   const loadTweets = function() {
-    console.log("Fetching tweets from the server...")
+    console.log("Fetching tweets from the server...");
     $.ajax("/tweets/", {method: "GET"})
-    .then(function(tweets) {
-      console.log("Success...Rendering tweets...");
-      renderTweets(tweets);
-    });
+      .then(function(tweets) {
+        console.log("Success...Rendering tweets...");
+        renderTweets(tweets);
+      });
   };
 
   loadTweets();
 
 
-    /**
-     * Asynchronous AJAX POST request to send new tweet form data to the server.
-     */
-    $(function() {
-      // on form submission, carry out function
-      $("#new-tweet-form").submit(function(event) {
-        // prevent the default submission behaviour
-        event.preventDefault();
+  /**
+   * Asynchronous AJAX POST request to send new tweet form data to the server.
+   */
+  $(function() {
+    // on form submission, carry out function
+    $("#new-tweet-form").submit(function(event) {
+      // prevent the default submission behaviour
+      event.preventDefault();
 
-        // validate that the tweet text (text=...) is 1-140 characters
-        const tweetText = $(this).serialize().slice(5);
-        if (!tweetText) {
-          return alert("Tweet text must not be empty! Please add a message and tweet again.");
-        }
-        else if (tweetText.length > 140) {
-          return alert("Tweet messages may not exceed 140 characters. Please shorten your message and tweet again.");
-        }
+      // validate that the tweet text (text=...) is 1-140 characters
+      const tweetText = $(this).serialize().slice(5);
+      if (!tweetText) {
+        return alert("Tweet text must not be empty! Please add a message and tweet again.");
+      } else if (tweetText.length > 140) {
+        return alert("Tweet messages may not exceed 140 characters. Please shorten your message and tweet again.");
+      }
 
-        // perform an AJAX POST request, sending the serialized form data to the server
-        console.log("Tweet button clicked, performing ajax call...");
-        $.ajax("/tweets/", {
-          method: "POST",
-          data: $(this).serialize()
-        })
+      // perform an AJAX POST request, sending the serialized form data to the server
+      console.log("Tweet button clicked, performing ajax call...");
+      $.ajax("/tweets/", {
+        method: "POST",
+        data: $(this).serialize()
+      })
         // Request completion handler
         .then(function(returnValue) {
           console.log("AJAX POST request complete");
           console.log(returnValue);
           loadTweets();
         });
-      });
     });
+  });
 });
