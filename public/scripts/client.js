@@ -128,20 +128,21 @@ $(document).ready(() => {
       // prevent the default submission behaviour
       event.preventDefault();
 
-      // validate that the tweet text is 1-140 characters
-      // show error message if invalid input/tweet text
+      // validate that the tweet text is 1-140 characters (not just spaces)
       const tweetText = $(this).children("#tweet-text").val();
-      if (!tweetText) {
+      // hide any past error message
+      $("#error-msg-1, #error-msg-2").slideUp();
+      $("#error-msg-1, #error-msg-2").removeClass("show-error");
+      // show error message if invalid input/tweet text
+      if (!tweetText || !tweetText.trim()) {
         $("#error-msg-1").addClass("show-error");
         return $("#error-msg-1").slideDown();
       } else if (tweetText.length > 140) {
         $("#error-msg-2").addClass("show-error");
         return $("#error-msg-2").slideDown();
       } else {
-        $("#error-msg-1").slideUp();
-        $("#error-msg-2").slideUp();
-        $("#error-msg-1").removeClass("show-error");
-        $("#error-msg-2").removeClass("show-error");
+        $("#error-msg-1, #error-msg-2").slideUp();
+        $("#error-msg-1, #error-msg-2").removeClass("show-error");
       }
 
       // perform an AJAX POST request, sending the serialized form data to the server
