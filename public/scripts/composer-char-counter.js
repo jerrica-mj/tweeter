@@ -10,7 +10,7 @@
 $(document).ready(() => {
 
   // Register an event handler to the .new-tweet form textarea
-  $("#tweet-text").on("input", function(event) {
+  $("#tweet-text").on("input", function() {
     // `this` refers to element on which event triggered (event.target) -> unless arrow notation was used
     // Update the counter value based on length of this input
     // traverse the DOM tree from `this` to the counter --> do NOT just use `$('.counter')`
