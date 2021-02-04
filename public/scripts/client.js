@@ -98,6 +98,7 @@ $(document).ready(() => {
     * @param {array} tweetsArray an array of tweet objects to be rendered.
     */
   const renderTweets = function(tweetsArray) {
+    $("#tweets-container").html("");
     tweetsArray.forEach(tweetObj => {
       // turn the tweet into HTML, then append to the page
       const $tweet = createTweetElement(tweetObj);
