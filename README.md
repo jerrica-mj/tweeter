@@ -6,7 +6,7 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 !["screenshot of the app page on a desktop-width screen"](https://github.com/jerrica-mj/tweeter/blob/master/docs/desktop-width-screenshot.png)
-!["screenshot of the app page on an approximately tablet-width screen"](https://github.com/jerrica-mj/tweeter/blob/master/docs/mobile-width-screenshot.png)
+!["screenshot of the app page on an approximately tablet-width screen"](https://github.com/jerrica-mj/tweeter/blob/master/docs/tablet-width-screenshot.png)
 !["screenshot of the app page on an approximately mobile-width screen"](https://github.com/jerrica-mj/tweeter/blob/master/docs/mobile-width-screenshot.png)
 
 ## Dependencies
