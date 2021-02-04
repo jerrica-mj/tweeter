@@ -5,7 +5,7 @@
 
 
 article.tweet {
-  width: 80%;
+  width: 100%;
   border: 3px solid black;
   padding: 0.5em;
   margin-top: 5px;
@@ -54,12 +54,10 @@ article.tweet > div.tweet-content {
 article.tweet footer {
   margin: 0.5em;
 }
-
 /* div w/ date */
 article.tweet footer div.tweet-date {
   font-size: 0.75em;
 }
-
 /* div w/ flag, retweets, likes icons */
 article.tweet footer div.tweet-buttons {
   display: flex;
@@ -68,16 +66,18 @@ article.tweet footer div.tweet-buttons {
   justify-content: space-between;
   color: var(--main-color);
   font-size: 0.7em;
+  visibility: hidden;
 }
 
 
 /* HOVER action */
 section.all-tweets article.tweet:hover {
-  box-shadow: 5px 5px 1px grey;
+  box-shadow: 5px 5px 1px var(--accent1);
 }
 section.all-tweets article.tweet:hover * {
+  /* make handle and icons visible, and darken text */
   visibility: visible;
-  color: rgb(12, 12, 12);
+  color: var(--dark-color);
 }
 article.tweet:hover footer div.tweet-buttons * {
   color: var(--main-color);
