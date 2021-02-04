@@ -1,12 +1,13 @@
 /* NAVIGATION BAR STYLING */
 
 nav {
-  height: 100px;
+  height: 120px;
   width: 100vw; /* 100% of the viewport width */
+  padding: 1.5em;
   background: var(--background-textured);
   color: var(--background);
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   /* Make navbar sticky / fixed position at top, in front of other elements */
@@ -14,9 +15,25 @@ nav {
   top: 0;
   z-index: 10;
 }
-
-nav span {
+/* Tweeter logo */
+nav span.logo {
   font-family: var(--logo-font);
   font-size: 1.4em;
-  margin: 0 4vw;
+}
+/* Clickable text 'Write a new tweet' */
+nav button.write-tweet {
+  background: none;
+  border: none;
+  color: var(--background);
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+nav button.write-tweet:focus {
+  outline: none;
+}
+nav button.write-tweet i {
+  color: var(--main-color);
+  /* 'outline' arrows to make more noticeable */
+  text-shadow: var(--background) 0px 0px 1px;;
 }
