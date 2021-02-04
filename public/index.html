@@ -32,10 +32,15 @@
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
+
   <body>
     <!-- Top nav bar (fixed position) -->
     <nav>
-      <span>tweeter</span>
+      <span class="logo">tweeter</span>
+      <button class="write-tweet" id="btn-compose-tweet" type="button">
+        <span><strong>Write</strong> a new tweet</span>
+        <i class="fas fa-angle-double-down"></i>
+      </button>
     </nav>
 
     <!-- Header with user's name and avatar -->
@@ -44,7 +49,6 @@
       <div>
         <img src="/images/profile-hex.png" alt="Placeholder for user avatar">
       </div>
-      <!-- <br> -->
       <div>
         <h2>Your Name</h2>
       </div>
@@ -55,8 +59,8 @@
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <!-- Form validation error messages -->
-        <div class="new-tweet-error" id="error-msg-1"><i class="far fa-times-circle"></i>Error! Tweets cannot be empty. Please add a message and tweet again.</div>
-        <div class="new-tweet-error" id="error-msg-2"><i class="far fa-times-circle"></i>Error! Max. 140 characters per tweet. Please shorten and tweet again.</div>
+        <div class="new-tweet-error" id="error-msg-1"><i class="far fa-times-circle"></i><div>Error! Tweets cannot be empty. <br>Please add a message and tweet again.</div></div>
+        <div class="new-tweet-error" id="error-msg-2"><i class="far fa-times-circle"></i><div>Error! Max. 140 characters per tweet. <br>Please shorten and tweet again.</div></div>
 
         <!-- New/Add Tweet Form Section -->
         <form method="POST" action="/tweets/" id="new-tweet-form">
@@ -64,38 +68,16 @@
           <textarea name="text" id="tweet-text"></textarea>
           <div>
             <button type="submit" id="submit-new-tweet">Tweet</button>
-            <output name="counter" for="tweet-text" class="counter">140</output>
+            <output name="counter" for="tweet-text" class="counter" id="char-counter">140</output>
           </div>
         </form>
       </section>
 
       <!-- All (Posted) Tweets Section -->
       <section class="all-tweets" id="tweets-container">
-        <!-- Tweets fetched from the server in client.js code -->
-        <!-- Footer icons use Font Awesome classes -->
-        <!-- IDEA: could toggle solid(fas)/outline(far) class heart based on whether user has liked -->
-
-        <!-- <article class="tweet"> -->
-          <!-- <header class="tweet-header"> -->
-            <!-- <div class="tweet-user"> -->
-              <!-- <div class="user-image"><i class="fas fa-user-circle"></i></div> -->
-              <!-- <img class="user-image" src="" alt="User's avatar"> -->
-              <!-- <div class="user-name">name</div> -->
-            <!-- </div> -->
-            <!-- <div class="user-handle">@handle</div> -->
-          <!-- </header> -->
-          <!-- <div class="tweet-contents">This is the tweet's text</div> -->
-          <!-- <footer class="tweet-footer"> -->
-            <!-- <div class="tweet-date">10 days ago</div> -->
-            <!-- <div class="tweet-buttons"> -->
-              <!-- <i class="fas fa-flag"></i> -->
-              <!-- <i class="fas fa-retweet"></i> -->
-              <!-- <i class="fas fa-heart"></i> -->
-            <!-- </div> -->
-          <!-- </footer> -->
-        <!-- </article> -->
-
+        <!-- Tweets fetched from the server in client.js loadTweets function -->
       </section>
+
     </main>
   </body>
 </html>
