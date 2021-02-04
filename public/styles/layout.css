@@ -19,13 +19,17 @@ html {
    --main-font: "Source Sans Pro", sans-serif;
    --logo-font: "Bungee", sans-serif;
    /* palette generated using http://colormind.io/bootstrap/ */
-   --background: #FBFAF9;
-   --main-color: #2c88d3;
+   --background: #FBFAF9; /* softer off-white instead of a true white (#FFFFFF) */
+   --main-color: #4056A1;
    --accent1: #545149;
    --accent2: #B33E5A;
    --dark-color: #1E1420;
    /* transparent texture image from https://www.transparenttextures.com/ */
    --background-textured: top url("https://www.transparenttextures.com/patterns/hexellence.png") var(--accent2);
+   /* error message colours */
+   --dark-red: rgb(150, 44, 44);
+   --light-red: rgb(246, 135, 153);
+   --transparent-red: rgba(250, 150, 150, 0.8);
  }
 
 /*
@@ -60,16 +64,32 @@ body {
   align-items: center;
 }
 
+
+
 /* RESIZING */
+/* modify error message display for 500+ px */
+@media only screen and (min-width: 500px) {
+  /* display nav bar items spaced across width */
+  html nav {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  main section.new-tweet div.new-tweet-error {
+    text-align: left;
+  }
+}
 /* Desktop 1024+ px */
 @media only screen and (min-width: 1024px) {
   body > nav {
     background-color: var(--main-color);
     background-image: none;
-    justify-content: flex-start;
   }
+  body nav button.write-tweet i {
+    color: var(--dark-red);
+  }
+  /* show header and main side by side */
   html body > header {
-    /* share width */
     width: 40%;
     margin: 150px 0;
     padding: 0;
