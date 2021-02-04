@@ -2,11 +2,12 @@
 /* The header displays the user's name and avatar */
 
 body > header {
-  height: 450px;
+  height: 400px;
   width: 100%;
   background: var(--background-textured);
+  background-position: center bottom;
   /* display vertically beneath the fixed navbar */
-  padding-top: 100px;
+  margin-top: 120px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
