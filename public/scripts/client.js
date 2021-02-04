@@ -5,12 +5,17 @@
  */
 
 
-// const moment = require("moment");
-// moment().format();
-
 
 // Ensure that document is ready
 $(document).ready(() => {
+
+  /**
+   * Scroll to and focus the new tweet form text input when 'write a new tweet' button is clicked.
+   */
+  $("#btn-compose-tweet").on("click", function() {
+    $("#tweet-text").scrollTop();
+    $("#tweet-text").focus();
+  });
 
 
 
@@ -83,7 +88,6 @@ $(document).ready(() => {
             .append($("<i/>", {"class": "fas fa-heart"}))
           )
         );
-
     return tweetHtml;
   };
 
@@ -114,21 +118,18 @@ $(document).ready(() => {
         renderTweets(tweets);
       });
   };
-
   loadTweets();
 
-  // $("#error-msg-1").hide();
 
   /**
    * Asynchronous AJAX POST request to send new tweet form data to the server.
+   * Validates form input then sends to server, and reloads/fetches all tweets.
    */
   $(function() {
-    // on form submission, carry out function
     $("#new-tweet-form").submit(function(event) {
-      // prevent the default submission behaviour
       event.preventDefault();
 
-      // validate that the tweet text is 1-140 characters (not just spaces)
+      // validate tweet text is 1-140 characters (not only spaces)
       const tweetText = $(this).children("#tweet-text").val();
       // hide any past error message
       $("#error-msg-1, #error-msg-2").slideUp();
@@ -151,12 +152,13 @@ $(document).ready(() => {
         method: "POST",
         data: $(this).serialize()
       })
-        // Request completion handler
+        // Request success handler
         .then(function() {
           console.log("AJAX POST request complete");
-          // clear the form textarea once submitted
+          // clear/reset the form, then reload tweets
           $(":input", "#new-tweet-form")
             .val("");
+          $("#char-counter").val("140");
           loadTweets();
         });
     });
