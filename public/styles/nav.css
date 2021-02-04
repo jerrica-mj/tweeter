@@ -1,18 +1,22 @@
 /* NAVIGATION BAR STYLING */
 
 nav {
-  height: 120px;
+  height: 100px;
   width: 100vw; /* 100% of the viewport width */
-  background-color: var(--main-color);
-  color: #FFFFFF;
-  padding: 1.5em;
-  /* Make navbar sticky / fixed position at top */
+  background: var(--background-textured);
+  color: var(--background);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  /* Make navbar sticky / fixed position at top, in front of other elements */
   position: fixed;
   top: 0;
-  /* Ensure that navbar displays in front of other elements */
   z-index: 10;
 }
 
 nav span {
   font-family: var(--logo-font);
+  font-size: 1.4em;
+  margin: 0 4vw;
 }
