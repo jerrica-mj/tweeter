@@ -21,9 +21,11 @@ html {
    /* palette generated using http://colormind.io/bootstrap/ */
    --background: #FBFAF9;
    --main-color: #2c88d3;
-   --accent1: #74aac1;
-   --accent2: #61688f;
-   --dark-color: #131c35;
+   --accent1: #545149;
+   --accent2: #B33E5A;
+   --dark-color: #1E1420;
+   /* transparent texture image from https://www.transparenttextures.com/ */
+   --background-textured: top url("https://www.transparenttextures.com/patterns/hexellence.png") var(--accent2);
  }
 
 /*
@@ -31,13 +33,13 @@ html {
  */
 
 body {
-  color: #545149;
-  /* ** TODO: Choose between original and matching color */
-  /* background-color: #f4f1ec; */
+  color: var(--accent1);
   background-color: var(--background);
   font-size: 24px;
-  /* font-family: "Source Sans Pro", sans-serif; */
   font-family: var(--main-font);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 /*
@@ -56,4 +58,25 @@ body {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+}
+
+/* RESIZING */
+/* Desktop 1024+ px */
+@media only screen and (min-width: 1024px) {
+  body > nav {
+    background-color: var(--main-color);
+    background-image: none;
+    justify-content: flex-start;
+  }
+  html body > header {
+    /* share width */
+    width: 40%;
+    margin: 150px 0;
+    padding: 0;
+  }
+  body main {
+    width: 50%;
+    margin: 150px 0;
+    padding: 0;
+  }
 }
