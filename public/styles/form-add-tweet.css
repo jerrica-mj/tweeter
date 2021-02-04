@@ -12,18 +12,21 @@
 
 /* Error messages from form validation */
 section.new-tweet div.new-tweet-error {
-  background-color: rgba(250, 150, 150, 0.8);
-  color: rgb(150, 44, 44);
+  background-color: var(--transparent-red);
+  color: var(--dark-red);
   font-size: 0.9em;
-  border: 0.1rem solid rgb(246, 135, 153);
+  border: 0.1rem solid var(--light-red);
   border-radius: 0.4em;
   padding: 0.4em;
   width: 100%;
   margin-bottom: 1em;
   display: none;
+  text-align: center;
 }
-section.new-tweet div.new-tweet-error i {
-  margin-right: 0.5em;
+section.new-tweet div.new-tweet-error > * {
+  vertical-align: middle;
+  display: inline-block;
+  margin: 1% 2%;
 }
 main.container section.new-tweet div.show-error {
   display: block;
